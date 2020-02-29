@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Items = require('../models/products')
+const isAuth = require('../middleware/sureAuth')
 
 router.get('/',(req,res,next)=>{
     Items.find()
@@ -21,13 +22,9 @@ router.post('/',(req,res,next)=>{
     var newItems = new Items({
         name: req.body.name
     });
-    console.log(newItems)
     newItems.save()
          .then(result=>{
-            res.status(200).json({
-                msg: 'successfully the data is saved',
-                products: result
-            })
+            res.status(200).json(result)
          })
          .catch(err =>{
              res.status(500).json({
@@ -37,16 +34,15 @@ router.post('/',(req,res,next)=>{
 })
 router.delete('/:id',(req,res,next)=>{
     var id = req.params.id;
-
     Items.deleteOne({_id: id})
          .then(()=>{
             res.status(200).json({
-                msg: 'successfully  the data is removed',
+                success: true
             })
          })
          .catch(err =>{
              res.status(500).json({
-                 Error: err
+                success: false
              })
          })
 })

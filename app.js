@@ -1,8 +1,6 @@
 const express = require('express');
 const app = express();
-
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 
 const url = 'mongodb://127.0.0.1:27017/shopping-list';
 mongoose.connect(url, {  useUnifiedTopology: true , useNewUrlParser: true });
@@ -13,12 +11,18 @@ db.once('open', _ => {
 db.on('error', err => {
   console.error('connection error:', err)
 });
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
+app.use(express.json());
 
-// app.use('/users',require('./routes/user'));
-app.use('/items',require('./routes/items'));
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Methods','GET,HEAD,POST,DELETE')
+  next();
+});
+
+app.use('/api/users',require('./routes/user-routes'));
+app.use('/api/items',require('./routes/items-routes'));
 
 app.use((req,res,next)=>{
     var err = new Error('Not found');
@@ -28,6 +32,6 @@ app.use((req,res,next)=>{
 })
 
 
-app.listen(5000,function(){
-    console.log('your app is listening port on 5000....');
+app.listen(3000,function(){
+    console.log('your app is listening port on 3000....');
 });

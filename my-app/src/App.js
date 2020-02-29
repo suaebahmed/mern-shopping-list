@@ -6,6 +6,7 @@ import ShoppingList from './components/ShoppingList';
 import ItemModel from './components/ItemModel';
 
 function App() {
+
   return (
     <div className="App">
       <AppNavbar></AppNavbar>

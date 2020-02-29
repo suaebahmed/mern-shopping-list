@@ -30,8 +30,7 @@ class ItemModel extends Component {
     }
     onSubmit=(e)=>{
         e.preventDefault()
-        console.log(this.state.name);
-        this.props.addItem({name: this.state.name,id: uuidv4()})
+        this.props.addItem({name: this.state.name})
         // another method
         // this.setState({
         //     model: !this.state.model,
@@ -40,7 +39,6 @@ class ItemModel extends Component {
         this.toggle(); /// this funtion called
     }
     render() {
-        console.log(this.props)
         return (
             <div>
                 <p>hello add item component</p>
