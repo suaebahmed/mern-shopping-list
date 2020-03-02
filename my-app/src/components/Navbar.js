@@ -13,6 +13,9 @@ import {
   DropdownItem,
   Container
 } from 'reactstrap';
+import RegisterModal from '../auth/register-modal';
+import Logout from '../auth/Logout';
+import LoginModel from '../auth/LoginModel';
 
 const AppNavbar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,17 +24,18 @@ const AppNavbar = (props) => {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="info" light expand="md">
         <Container>
         <NavbarBrand href="/">reactstrap</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              {/* logout and RegisterModal component is NavItem */}
+                <Logout></Logout>  
             </NavItem>
             <NavItem>
-              <NavLink href="/">GitHub</NavLink>
+              <RegisterModal></RegisterModal>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -39,7 +43,7 @@ const AppNavbar = (props) => {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  Option 1
+                          <LoginModel></LoginModel>
                 </DropdownItem>
                 <DropdownItem>
                   Option 2

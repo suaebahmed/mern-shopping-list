@@ -30,17 +30,10 @@ class ItemModel extends Component {
     }
     onSubmit=(e)=>{
         e.preventDefault()
-        console.log(this.state.name);
-        this.props.addItem({name: this.state.name,id: uuidv4()})
-        // another method
-        // this.setState({
-        //     model: !this.state.model,
-        // })
-        // to close modal
-        this.toggle(); /// this funtion called
+        this.props.addItem({name: this.state.name})
+        this.toggle();
     }
     render() {
-        console.log(this.props)
         return (
             <div>
                 <p>hello add item component</p>
