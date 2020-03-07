@@ -15,7 +15,6 @@ const errReducer = ( state=initialState, action) =>{
                 id: action.payload.id
             }
         case CLEAR_ERRORS:
-            console.log(action)
             return{
                 msg: {},
                 status: null,

@@ -26,7 +26,7 @@ export const loadUser = () => (dispatch,getState) =>{
     if(token){
         config.headers['x-auth-token'] = token;
     }
-    axios.get('http://localhost:3000/api/auth/user',config) //this was worng
+    axios.get('http://localhost:5000/api/auth/user',config) //this was worng
          .then(res=>{
              console.log(res.data)
             dispatch({
@@ -54,7 +54,7 @@ export const register =({name,email,password})=> dispatch =>{
         }
     }
     const body= JSON.stringify({name,email,password})
-    axios.post('http://localhost:3000/api/auth/signup',body,config)
+    axios.post('http://localhost:5000/api/auth/signup',body,config)
         .then(res=>{
             dispatch({type: REGISTER_SUCCESS,payload: res.data})
              
@@ -78,7 +78,7 @@ export const login  =({email,password})=> dispatch =>{
         }
     }
     const body= JSON.stringify({email,password})
-    axios.post('http://localhost:3000/api/auth/signin',body,config)
+    axios.post('http://localhost:5000/api/auth/signin',body,config)
         .then(res=>{
             dispatch({type: LOGIN_SUCCESS,payload: res.data})
         })

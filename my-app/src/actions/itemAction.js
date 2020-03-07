@@ -7,7 +7,7 @@ export const getItems = () =>{
     return (dispatch)=>{
 
         dispatch({type: ITEMLS_LOADING});
-        axios.get('http://localhost:3000/api/items')
+        axios.get('http://localhost:5000/api/items')
              .then(response=>{
                 const data = response.data.products
                 dispatch({type: GET_ITEMS,payload: data})
@@ -20,7 +20,7 @@ export const getItems = () =>{
 
 export const addItem = (item) =>{
     return (dispatch,getState) =>{
-        axios.post('http://localhost:3000/api/items',item,configAuth(getState)) // item is obj 
+        axios.post('http://localhost:5000/api/items',item,configAuth(getState)) // item is obj 
         .then(res=>{
             dispatch({
                 type: ADD_ITEM,
@@ -36,7 +36,7 @@ export const deleteItem = (id) =>{
     return (dispatch,getState) =>{
 
 
-        axios.delete(`http://localhost:3000/api/items/${id}`,configAuth(getState))
+        axios.delete(`http://localhost:5000/api/items/${id}`,configAuth(getState))
         .then(res=>{
             console.log(res.data)
             dispatch({
