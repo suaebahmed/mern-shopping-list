@@ -7,5 +7,26 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import store from './store'
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
+import { BrowserRouter,Route, Switch} from 'react-router-dom'
+import Main from './components/profiles/Main';
+
+const XX=()=>{
+    return(
+        <Switch>
+            <Route exact path='/'>
+                <App/>
+            </Route>
+            <Route path='/profile'>
+                <Main/>
+            </Route>
+        </Switch>
+    )
+}
+
+ReactDOM.render(
+<Provider store={store}>
+    <BrowserRouter>
+        <XX/>
+    </BrowserRouter>
+</Provider>, document.getElementById('root'));
 serviceWorker.unregister();

@@ -16,10 +16,10 @@ function App(props) {
   },[])
   return (
     <div className="App">
-      <AppNavbar></AppNavbar>
+      <AppNavbar/>
       <h1>hello world</h1>
-      <ShoppingList></ShoppingList>
-      <ItemModel></ItemModel> 
+      <ShoppingList/>
+      <ItemModel/>
     </div>
   );
 }

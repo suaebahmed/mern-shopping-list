@@ -90,7 +90,7 @@ class RegisterModel extends Component {
                                 <Input type="text" 
                                 name="password" 
                                 id="password" 
-                                placeholder="Add shopping name *" 
+                                placeholder="Enter your password *" 
                                 onChange={this.onChange}/>
                             </FormGroup>
                                 <Button style={{marginTop: "20px"}}

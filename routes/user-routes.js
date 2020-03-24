@@ -81,7 +81,7 @@ router.post('/signin',(req,res,next)=>{
         .then(user=>{
             if(!user){
                 res.status(500).json({
-                    msg: 'the email is already exists'
+                    msg: 'Your email is incorrect'
                 })
             }else{
                 bcrypt.compare(password,user.password,(err,isMatch)=>{
@@ -91,7 +91,7 @@ router.post('/signin',(req,res,next)=>{
                         })
                     }
                     else if(!isMatch){
-                        res.status(201).json({
+                        return res.status(500).json({ // status code 201
                             msg: 'email / password is incorrect'
                         })
                     }else{
@@ -118,7 +118,7 @@ router.post('/signin',(req,res,next)=>{
                 Error: err
             })
         })
-})
+    })
 
 router.get('/user',isAuth,(req,res,next)=>{
     User.findById(req.user.user._id)

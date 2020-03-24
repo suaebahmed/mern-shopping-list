@@ -28,7 +28,6 @@ export const loadUser = () => (dispatch,getState) =>{
     }
     axios.get('http://localhost:5000/api/auth/user',config) //this was worng
          .then(res=>{
-             console.log(res.data)
             dispatch({
                 type: USER_LOADED,
                 payload: res.data
@@ -80,9 +79,11 @@ export const login  =({email,password})=> dispatch =>{
     const body= JSON.stringify({email,password})
     axios.post('http://localhost:5000/api/auth/signin',body,config)
         .then(res=>{
+            console.log('success login')
             dispatch({type: LOGIN_SUCCESS,payload: res.data})
         })
         .catch(err=>{
+            console.log(err)
             dispatch(retunErrors(err.response.data, err.response.status,'LOGIN_FAIL'))
             dispatch({type: LOGIN_FAIL})
         })

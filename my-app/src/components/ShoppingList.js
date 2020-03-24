@@ -16,10 +16,6 @@ function ShoppingList(props) {
 
     return (
         <Container>
-            <Button
-            color = "dark"
-            style = {{marginBottom: '2rem'}}
-            >Add Item</Button>
             <ListGroup>
                 <TransitionGroup className="shopping-list">
                     {items.map(({_id,name})=>(              ///  destructuring 

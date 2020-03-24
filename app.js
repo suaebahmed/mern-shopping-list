@@ -21,6 +21,10 @@ app.use(function(req, res, next) {
   next();
 });
 
+// const fileupload = require('express-fileupload');
+// app.use(fileupload());
+app.use('/api/profile',require('./routes/userProfile-route'));
+
 app.use('/api/auth',require('./routes/user-routes'));
 app.use('/api/items',require('./routes/items-routes'));
 
